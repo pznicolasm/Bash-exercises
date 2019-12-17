@@ -1,0 +1,21 @@
+#Desarrolle un script que cada 5 segundos verifique si hay un proceso con nombre APACHE
+#corriendo y sume una variable contador en el caso de estar corriendo.
+#El script finaliza al llegar el contador a 10
+
+#!/bin/bash
+
+contador=0 
+
+while [ $contador -le 10 ]; do
+	firefox=$(ps -e | grep -c firefox)
+	if [ $firefox -ne 0 ]; then
+		echo "Se encontraron $contador proceso/s firefox"
+		contador=$(($contador + 1))
+	fi
+	if [ $contador -eq 10 ]; then
+		echo "Se encontraron $contador procesos de firefox"
+		echo "llego al contador 10"
+		exit 0
+	fi
+	sleep 1
+done

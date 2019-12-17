@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#Desarrolle un script que cada 5 segundos verifique que usuario estan logeados en el sistema
+#y escriba los resultados junto con la fecha y hora en un archivo ubicado en /var/log 
+# llamado intruders.log
+
+us=$(who)
+aux=0
+touch "intruders.log"
+
+while [ $aux == 0 ];do
+	echo $us $date > "intruders.log"
+	echo "hubo intrusos: $us $date . y se copiaron en intruders.log"
+sleep 2
+done
